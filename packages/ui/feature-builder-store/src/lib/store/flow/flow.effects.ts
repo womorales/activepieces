@@ -222,9 +222,10 @@ export class FlowsEffects {
         let flowOperation: FlowOperationRequest;
         switch (action.type) {
           case FlowsActionType.UPDATE_TRIGGER: {
-            const op = FlowStructureUtil.removeAnySubequentStepsFromTrigger(
-              action.operation
-            );
+            const op =
+              FlowStructureUtil.removeAnySubequentStepsFromFlowOperationStep(
+                action.operation
+              ) as typeof action.operation;
             flowOperation = {
               type: FlowOperationType.UPDATE_TRIGGER,
               request: op,
@@ -238,9 +239,10 @@ export class FlowsEffects {
             };
             break;
           case FlowsActionType.UPDATE_ACTION: {
-            const op = FlowStructureUtil.removeAnySubequentStepsFromAction(
-              action.operation
-            );
+            const op =
+              FlowStructureUtil.removeAnySubequentStepsFromFlowOperationStep(
+                action.operation
+              ) as typeof action.operation;
             flowOperation = {
               type: FlowOperationType.UPDATE_ACTION,
               request: op,

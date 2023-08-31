@@ -86,18 +86,10 @@ export class FlowStructureUtil {
     );
   }
 
-  public static removeAnySubequentStepsFromTrigger<T extends Trigger>(
-    req: T
-  ): UpdateTriggerRequest {
-    const clone: Trigger = JSON.parse(JSON.stringify(req));
-    if (clone.nextAction) clone.nextAction = undefined;
-    return clone;
-  }
-
-  public static removeAnySubequentStepsFromAction(
-    req: Action
-  ): UpdateActionRequest {
-    const clone: Action = JSON.parse(JSON.stringify(req));
+  public static removeAnySubequentStepsFromFlowOperationStep(
+    req: Trigger | Action
+  ): typeof req {
+    const clone: Trigger | Action = JSON.parse(JSON.stringify(req));
     if (clone.nextAction) clone.nextAction = undefined;
     switch (clone.type) {
       case ActionType.BRANCH: {
