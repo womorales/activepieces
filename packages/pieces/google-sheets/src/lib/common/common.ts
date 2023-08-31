@@ -434,3 +434,7 @@ export enum Dimension {
     ROWS = 'ROWS',
     COLUMNS = 'COLUMNS',
 }
+
+export function getErrorSheet(sheetId: number) {
+    return `Sheet with ID ${sheetId} not found in spreadsheet`;
+}
