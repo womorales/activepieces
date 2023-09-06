@@ -51,6 +51,7 @@ import {
   FlagService,
   TestStepService,
   environment,
+  isThereAnyNewFeaturedTemplatesResolverKey,
 } from '@activepieces/ui/common';
 import { PannerService } from '@activepieces/ui/feature-builder-canvas';
 import { MatDialog } from '@angular/material/dialog';
@@ -133,6 +134,9 @@ export class CollectionBuilderComponent implements OnInit, OnDestroy {
     if (localStorage.getItem('newFlow')) {
       const TemplateDialogData: TemplateDialogData = {
         insideBuilder: true,
+        isThereNewFeaturedTemplates$: this.actRoute.data.pipe(
+          map((val) => val[isThereAnyNewFeaturedTemplatesResolverKey])
+        ),
       };
       this.importTemplate$ = this.flagService.getTemplatesSourceUrl().pipe(
         map((url) => !!url),
