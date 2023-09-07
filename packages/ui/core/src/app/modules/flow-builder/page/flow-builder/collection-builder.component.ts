@@ -65,6 +65,7 @@ import {
   TemplateDialogData,
   TemplateBlogNotificationComponent,
   BLOG_URL_TOKEN,
+  TemplateDialogClosingResult,
 } from '@activepieces/ui/feature-templates';
 import { BuilderAutocompleteMentionsDropdownService } from '@activepieces/ui/common';
 
@@ -148,8 +149,8 @@ export class CollectionBuilderComponent implements OnInit, OnDestroy {
               })
               .afterClosed()
               .pipe(
-                switchMap((template?: FlowTemplate) => {
-                  if (template) {
+                switchMap((result?: TemplateDialogClosingResult) => {
+                  if (result) {
                     return this.store
                       .select(BuilderSelectors.selectCurrentFlow)
                       .pipe(
@@ -157,10 +158,10 @@ export class CollectionBuilderComponent implements OnInit, OnDestroy {
                         tap((flow) => {
                           this.builderService.importTemplate$.next({
                             flowId: flow.id,
-                            template: template,
+                            template: result.template,
                           });
-                          if (template.blogUrl) {
-                            this.showBlogNotification(template);
+                          if (result.template.blogUrl) {
+                            this.showBlogNotification(result.template);
                           }
                         })
                       );
