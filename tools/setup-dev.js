@@ -4,7 +4,7 @@ const { execSync } = require('child_process');
 
 // Check Node.js version
 const nodeVersion = execSync('node --version').toString().trim();
-const requiredVersions = ['v18','v20'];
+const requiredVersions = ['v19','v20'];
 
 if (requiredVersions.some(version=>nodeVersion.startsWith(version))) {
   console.log(`Node.js version is compatible ${nodeVersion}.`);

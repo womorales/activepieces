@@ -1,0 +1,42 @@
+{
+  "name": "pieces-bullseye-lead",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/pieces/bullseye-lead/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/pieces/bullseye-lead",
+        "tsConfig": "packages/pieces/bullseye-lead/tsconfig.lib.json",
+        "packageJson": "packages/pieces/bullseye-lead/package.json",
+        "main": "packages/pieces/bullseye-lead/src/index.ts",
+        "assets": [
+          "packages/pieces/bullseye-lead/*.md"
+        ],
+        "buildableProjectDepsInPackageJsonType": "dependencies"
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs pieces-bullseye-lead {args.ver} {args.tag}",
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "packages/pieces/bullseye-lead/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
