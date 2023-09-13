@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/v1',
+  apiUrl: 'https://urban-umbrella-6ppjpwqr76ghrvvg-3000.preview.app.github.dev/v1',
   jwtTokenName: 'token',
   redirectUrl: 'http://localhost:4200/redirect',
   userPropertyNameInLocalStorage: 'currentUser',

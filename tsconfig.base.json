@@ -30,6 +30,9 @@
       ],
       "@activepieces/piece-binance": ["packages/pieces/binance/src/index.ts"],
       "@activepieces/piece-box": ["packages/pieces/box/src/index.ts"],
+      "@activepieces/piece-bullseye-lead": [
+        "packages/pieces/bullseye-lead/src/index.ts"
+      ],
       "@activepieces/piece-cal-com": ["packages/pieces/cal-com/src/index.ts"],
       "@activepieces/piece-calendly": ["packages/pieces/calendly/src/index.ts"],
       "@activepieces/piece-certopus": ["packages/pieces/certopus/src/index.ts"],
